@@ -38,12 +38,12 @@ class Database:
         self.libros = []
         self._initialized = True
 
-    def agregar_libro(self, titulo: str, autor: str):
+    def agregar_libro(self, titulo: str, autor: str, tipo: str = "No especificado"):
         """
         Agrega un nuevo libro a nuestra base de datos.
         """
-        print(f"Agregando libro '{titulo}' de {autor}.")
-        self.libros.append({"titulo": titulo, "autor": autor})
+        print(f"Agregando libro '{titulo}' de {autor}. Tipo: {tipo}")
+        self.libros.append({"titulo": titulo, "autor": autor, "tipo": tipo})
 
     def listar_libros(self):
         """
@@ -54,15 +54,16 @@ class Database:
             print("Base de datos vacía.")
         else:
             for libro in self.libros:
-                print(f"- Título: {libro['titulo']}, Autor: {libro['autor']}")
+                print(f"- Título: {libro['titulo']}, Autor: {libro['autor']}, Tipo: {libro['tipo']}")
         print("------------------------------------------")
 
-if __name__ == "__main__":
+
+# Código de prueba
+"""if __name__ == "__main__":
 
     # 1. Obtenemos dos "instancias" de la base de datos.
     print("Intentando obtener la primera instancia (db1)...")
     db1 = Database()
-
     print("\nIntentando obtener la segunda instancia (db2)...")
     db2 = Database()
 
@@ -71,9 +72,9 @@ if __name__ == "__main__":
     print(f"ID de db2: {id(db2)}")
 
     if id(db1) == id(db2):
-        print("¡Éxito! Ambas variables apuntan a la MISMA instancia.")
+        print("Ambas variables apuntan a la MISMA instancia.")
     else:
-        print("¡Error! Se crearon dos instancias diferentes.")
+        print("Se crearon dos instancias diferentes.")
     
     assert db1 is db2, "Las instancias no son las mismas."
     print("Las instancias son las mismas.\n")
@@ -81,4 +82,4 @@ if __name__ == "__main__":
     db1.agregar_libro("El Aleph", "Jorge Luis Borges")
     db1.agregar_libro("Cien Años de Soledad", "Gabriel García Márquez")
 
-    db2.listar_libros()
+    db2.listar_libros()"""
