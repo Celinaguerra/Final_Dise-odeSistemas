@@ -1,6 +1,8 @@
 from database import Database
 from libro import LogisticaLibro, LogisticaFisica, LogisticaDigital
 from abstract_factory import ExperienciaUsuarioFactory, AdminFactory, UsuarioFactory
+from usuario import UsuarioBuilder
+
 
 def client_code(creador: LogisticaLibro, titulo: str, autor: str):
     """
@@ -48,3 +50,18 @@ if __name__ == "__main__":
     usuario_factory = UsuarioFactory()
     configurar_abstract_factory(usuario_factory)
 
+#------ Parte 4 ------
+    
+    # Usuario con todos sus datos opcionales.
+    usuario_completo = (UsuarioBuilder("Juan Pérez", "juan.perez@example.com")
+                        .con_direccion("Av. Siempre Viva 742")
+                        .con_telefono("555-1234")
+                        .construir())
+    print("\nInformación del Usuario 1:")
+    print(usuario_completo)
+
+    # Usuario solo con los datos obligatorios.
+    usuario_simple = (UsuarioBuilder("Ana Gómez", "ana.gomez@example.com")
+                        .construir())
+    print("\nInformación del Usuario 2:")
+    print(usuario_simple)
